@@ -1,0 +1,35 @@
+*{margin:0;padding:0;}
+a{text-decoration: none;}
+main{
+    border:1px solid red;
+    text-align: center;
+}
+main .wrapper{
+    border:1px solid pink;
+    display: inline-block;
+    vertical-align: top;
+
+}
+main .wrapper div{
+    border:1px solid green;
+
+}
+main .wrapper div kbd {
+    border:1px solid blue;
+    width: 4em;
+    height: 4em;
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+kbd button{
+    position: absolute;
+    bottom:0;
+    right:0;
+    display:none;
+}
+kbd:hover button{
+    display: block;
+}
+
