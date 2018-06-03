@@ -9,7 +9,7 @@ main .wrapper{display: inline-block;vertical-align: top;background: rgba(255,255
 .row:nth-child(3){margin-left:-80px;}
 
 kbd {text-transform: uppercase;display: inline-block;vertical-align: top;position: relative;}
-.key{width: 50px;height: 40px;background:linear-gradient(to bottom, #292929 0%,#111111 100%);color:#C5C5C5;font-size:16px;font-family: Helvetica sans-serif;border:1px solid #373737;box-shadow: 0 0 0 1px #1A1B1C, 0 0 0 2px #1F2020, 0 3px 0 2px #080808;border-radius:6px;margin:0 10px;}
+.key{width: 50px;height: 40px;background:linear-gradient(to bottom, #292929 0%,#111111 100%);color:#C5C5C5;font-size:14px;font-family: Helvetica sans-serif;border:1px solid #373737;box-shadow: 0 0 0 1px #1A1B1C, 0 0 0 2px #1F2020, 0 3px 0 2px #080808;border-radius:6px;margin:0 10px;}
 kbd button{position: absolute;bottom:0;right:0;display:none;}
 kbd:hover button{display: block;}
 
