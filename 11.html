@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>lxiaox导航</title>
+    <link rel="stylesheet" href=".//style.css">
+</head>
+<body>
+    <header></header>
+    <main>
+        <div class="wrapper" id="main"></div>
+    </main>
+    <footer></footer>
+
+    <script>
+        var keys={
+            0:{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+            1:{0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+            2:{0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+            length:3
+        }
+        var hash={i:'iqiyi.com',q:'qq.com',z:'zhihu.com',w:'weibo.com',y:'youtube.com',t:'tencent.com'}
+        //取出localstorage中的zzz对应的hash
+        hashInLocalStorage = JSON.parse(localStorage.getItem('zzz')||'null');
+        if(hashInLocalStorage){
+            hash = hashInLocalStorage
+        }
+
+        ////////////////////////////////////////////////
+        //生成三行div及div中的kbd
+        index1 = 0;
+        while(index1 < keys['length']){
+            //创建div
+            div = document.createElement('div');
+            div.className = 'row'
+            main.appendChild(div);
+            row = keys[index1];
+            index2 = 0;
+            while(index2 < row['length']){
+                //在每个div中创建kbd
+                var kbd = document.createElement('kbd');
+                kbd.className = 'key'
+
+                var span = document.createElement('span');
+                span.textContent = row[index2];
+                span.className='text'
+                div.appendChild(kbd);
+
+                //创建kbd中的编辑按钮
+                var button = document.createElement('button');
+                button.textContent = '编辑';
+                button.id = row[index2];    //将按钮与字母联系起来
+                //增加每个按钮的点击事件
+                button.onclick = function(xyz){
+                    x = prompt('请给我一个域名，如qq.com：');
+                    var button2 = xyz.target //xyz.target是被点击元素
+                    var key =button2['id'];
+                    hash[key] = x;
+                    var img2 = button2.previousElementSibling
+                    img2.src = 'http://' + x + '/favicon.ico'
+                    img2.onerror = function(xxx){
+                        xxx.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                    }
+                    localStorage.setItem('zzz',JSON.stringify(hash));
+                    console.log(hash)
+                };
+
+                //tubiao
+                var img = document.createElement('img')
+                if(hash[row[index2]]) {
+                    img.src = 'http://' + hash[row[index2]] + '/favicon.ico'
+                }else{
+                    img.src='//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                }
+                img.onerror = function(xxx){
+                    xxx.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                }
+
+
+                kbd.appendChild(span);
+                kbd.appendChild(img);
+                kbd.appendChild(button);
+                div.appendChild(kbd);
+                index2 = index2+1
+            }
+            index1 = index1+1
+        }
+        //////////////////////////////////////////////
+        //document中的按键事件
+        document.onkeypress = function(xyz){
+            key = xyz['key'];//按键信息
+            website = hash[key];
+            window.open("https://"+website,'_blank')
+            //location.href="https://"+website
+        }
+    </script>
+
+</body>
+</html>
